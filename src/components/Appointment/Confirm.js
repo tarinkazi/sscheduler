@@ -1,6 +1,6 @@
 import Button from "components/Button";
 import React from "react";
-import Show from "./Show";
+
 
 export default function Confirm(props){
   return(
