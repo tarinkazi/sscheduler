@@ -3,7 +3,7 @@ import axios from "axios";
 import DayList from "./DayList";
 import "components/Application.scss";
 import Appointment from "components/Appointment";
-import { getAppointmentsForDay } from "helpers/selectors";
+import { getAppointmentsForDay, getInterview} from "helpers/selectors";
 //import { response } from "express";
 
 
@@ -29,15 +29,40 @@ Promise.all([
  },[]);
  
 
-const dailyAppointments = getAppointmentsForDay(state, state.day)
+const appointments = getAppointmentsForDay(state, state.day);
 
-  const parseAppointment=dailyAppointments.map(appointment =>
-    <Appointment key={appointment.id} 
+
+  const schedule=appointments.map(
+(appointment) =>{
+  const interview = getInterview(state, appointment.interview);
+
+  return (
+    <Appointment 
+    key={appointment.id} 
     id={appointment.id} 
     time={appointment.time} 
-    interview={appointment.interview} 
+    interview={interview} 
     />
- )
+  );
+  });
+
+
+//const appointments = getAppointmentsForDay//(state, state.day);
+
+// const schedule = appointments.map((appointment) => {
+//   const interview = getInterview(state, appointment.interview);
+
+//   return (
+//     <Appointment
+//       key={appointment.id}
+//       id={appointment.id}
+//       time={appointment.time}
+//       interview={interview}
+//     />
+//   );
+// });
+
+
   
   return (
     <main className="layout">
@@ -65,7 +90,7 @@ const dailyAppointments = getAppointmentsForDay(state, state.day)
      
       <section className="schedule">
         
-        {parseAppointment}
+        {schedule}
         <Appointment key="last" time="5pm" />
 
       </section>
