@@ -17,6 +17,8 @@ export default function Appointment(props) {
   const DELETING = "DELETING";
   const CONFIRM = "CONFIRM";
   const EDIT = "EDIT";
+  const ERROR_SAVE = "ERROR_SAVE";
+  const ERROR_DELETE = "ERROR_DELETE";
   //let interviewers=[];
   const { mode, transition, back } = useVisualMode(
     props.interview ? SHOW : EMPTY
@@ -33,18 +35,20 @@ export default function Appointment(props) {
       .then(() => {
 
         transition(SHOW);
-      })
+      }).catch(error => transition(ERROR_SAVE, true));
+
   }
 
   function onDelete() {
     transition(DELETING);
+
     props.cancelInterview(props.id)
       .then(() => {
         transition(EMPTY);
-      })
+      }).catch(error => transition(ERROR_DELETE, true));
   }
 
-
+//console.log("property for interview",props.interview.interviewer)
   return (
 
 
@@ -61,7 +65,8 @@ export default function Appointment(props) {
 
         <Show
           student={props.interview.student}
-          interviewer={props.interview.interviewer && props.interview.interviewer.name}
+         interviewer={props.interview.interviewer && props.interview.interviewer.name}
+         //interviewer={props.interview.interviewer.name}
           onDelete={()=>transition(CONFIRM)}
           onEdit={() => transition(EDIT)}
         />
@@ -91,6 +96,13 @@ export default function Appointment(props) {
 
         />
       )}
+      {mode === ERROR_SAVE && (
+				<Error
+					message='Error, cant save Appointment, try again...'
+					onClose={() => back()}
+				/>
+			)}
+      {mode === ERROR_DELETE && <Error message={'Error deleting encountered. Sorry!'} onClose={back} />}
 
     </article>
 
