@@ -69,6 +69,29 @@ export default function Application(props) {
       });
   }
 
+  function editInterview(id, interview) {
+      const appointment = {
+    		...state.appointments[id],
+    		interview: { ...interview },
+    	};
+  
+      const appointments = {
+    		...state.appointments,
+    		[id]: appointment,
+    	};
+      
+      return axios
+    		.put(`/api/appointments/${id}`, { interview })
+    		.then((res) => {
+          setState({ ...state, appointments });
+         
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+  
+    }
+
   const schedule = appointments.map(
     (appointment) => {
       const interview = getInterview(state, appointment.interview);
@@ -82,6 +105,7 @@ export default function Application(props) {
           interviewers={interviewers}
           bookInterview={bookInterview}
           cancelInterview={cancelInterview}
+          editInterview={editInterview}
         />
       );
     });
