@@ -22,7 +22,7 @@ export default function DayListItem(props){
         
       }
   }
-  console.log(props);
+  //console.log(props);
   return (
     <li className ={dayClass} 
     onClick={() => props.onChange(props.name)}

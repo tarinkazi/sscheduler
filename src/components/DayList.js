@@ -10,7 +10,7 @@ spots={day.spots}
 selected={day.name===props.value}
 onChange={props.onChange}
 />)
-console.log(props);
+//console.log(props);
   return (
     <ul>
             {parseDays}

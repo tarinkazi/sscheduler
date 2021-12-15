@@ -18,7 +18,7 @@ export function getInterview(state, interview) {
 
   let interviewobj={};
   let obj = null;
-  console.log("Interview obj",interview, state.interviewers);
+  //console.log("Interview obj",interview, state.interviewers);
   if(interview !== null ){
 
     for(let key in state.interviewers){
@@ -33,7 +33,7 @@ export function getInterview(state, interview) {
         
       }
     }
-    console.log("interviewobj after", interviewobj)
+    //console.log("interviewobj after", interviewobj)
     return interviewobj;
     
   } 
