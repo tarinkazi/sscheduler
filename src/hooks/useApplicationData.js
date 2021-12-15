@@ -41,9 +41,9 @@ function bookInterview(id, interview) {
      setState({ ...state, appointments });
     
    })
-   // .catch((err) => {
-   //   console.log(err);
-   // });
+   .catch((err) => {
+     console.log(err);
+   });
  }
 
  function cancelInterview(id){
@@ -57,9 +57,9 @@ function bookInterview(id, interview) {
       setState({ ...state, appointments });
      
     })
-    // .catch((err) => {
-    //   console.log(err);
-    // });
+    .catch((err) => {
+      console.log(err);
+    });
 }
 
 function editInterview(id, interview) {
@@ -79,9 +79,9 @@ function editInterview(id, interview) {
       setState({ ...state, appointments });
      
     })
-    // .catch((err) => {
-    //   console.log(err);
-    // });
+    .catch((err) => {
+      console.log(err);
+    });
 
 }
 const updateSpots = (id, dif) => {
