@@ -34,8 +34,13 @@ npm run storybook
 ## Dependencies
 
 -axios
+
 -@testing-library/react-hooks
+
 -react-test-renderer
+
 -react
+
 -react-dom
+
 -react-scripts
