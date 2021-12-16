@@ -1,8 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
-
 import "index.scss";
-
 import Application from "components/Application";
 import Appointment from "components/Appointment";
 

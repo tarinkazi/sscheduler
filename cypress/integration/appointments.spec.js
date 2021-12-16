@@ -7,7 +7,8 @@ describe("Appointments", () => {
  
    cy.contains("Monday");
   });
- 
+
+ //Book an Interview
   it("should book an interview", () => {
    cy.get("[alt=Add]")
     .first()
@@ -22,6 +23,7 @@ describe("Appointments", () => {
    cy.contains(".appointment__card--show", "Sylvia Palmer");
   });
 
+  //Edit an Interview
   it("should edit an interview", () => {
     cy.get("[alt=Edit]")
       .first()
@@ -35,6 +37,8 @@ describe("Appointments", () => {
     cy.contains(".appointment__card--show", "Lydia Miller-Jones");
     cy.contains(".appointment__card--show", "Tori Malcolm");
   });
+
+  //Concel an interview
   it("should cancel an interview", () => {
     cy.get("[alt=Delete]")
       .click({ force: true });

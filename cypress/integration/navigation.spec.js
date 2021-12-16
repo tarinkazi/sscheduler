@@ -3,6 +3,7 @@ describe("Navigation", () => {
     cy.visit("/");
   });
 
+  //Find a specific day
   it("should navigate to Tuesday", () => {
     cy.visit("/");
 
