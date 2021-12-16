@@ -2,8 +2,11 @@
 Interview Scheduler is a React app that uses custom hooks and selector functions to allow users to create, edit, and cancel interviews.
 
 .Development focused on a single page application (SPA) called Interview Scheduler, built using React.
+
 .Data is persisted by the API server using a PostgreSQL database.
+
 .The client application communicates with an API server over HTTP, using the JSON format.
+
 .Jest, Storybook, and Cypress tests are used through the development of the project.
 
 ## Setup
