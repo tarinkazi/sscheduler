@@ -28,6 +28,7 @@ describe("Form", () => {
   it("validates that the student name is not blank", () => {
     const onSave = jest.fn();
     const {getByText} = render(<Form interviewers = {interviewers} onSave = {onSave}/>);
+  
     fireEvent.click(getByText("Save"))
    
     /* 1. validation is shown */
