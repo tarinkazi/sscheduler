@@ -46,6 +46,6 @@ npm run storybook
 -react-scripts
 
 ##ScreenShot
-!["Screenshot Booking Appoinment"]{https://github.com/tarinkazi/sscheduler/blob/9e3f35ef6ad5e535366e3c64a2976373dc557525/public/images/create-appointment.png}
+!["Screenshot Booking Appoinment"]{public/images/confirm-deleting.png}
 !["Screenshot Saving Appoinment"]{https://github.com/tarinkazi/sscheduler/blob/9e3f35ef6ad5e535366e3c64a2976373dc557525/public/images/create-appointment.png}
 !["Screenshot DElete Appoinment"]{https://github.com/tarinkazi/sscheduler/blob/9e3f35ef6ad5e535366e3c64a2976373dc557525/public/images/confirm-deleting.png}
