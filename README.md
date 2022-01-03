@@ -33,14 +33,19 @@ npm run storybook
 
 ## Dependencies
 
--axios
+- axios | ^0.24.0
 
--@testing-library/react-hooks
+- classnames | ^2.2.6
 
--react-test-renderer
+- cors | ^2.8.5
 
--react
+- cypress | ^9.1.1
 
--react-dom
+- normalize.css | ^8.0.1
 
--react-scripts
+- react | ^16.14.0
+
+- react-dom | ^16.9.0
+
+- react-scripts | 3.0.0
+

@@ -80,8 +80,8 @@ export default function Appointment(props) {
       {mode === CONFIRM && (
         <Confirm
           message={`Are you sure you want to delete?`}
-          onConfirm={() => onDelete()}
-          onCancel={() => back()}
+          onConfirm={onDelete}//{() => onDelete()}
+          onCancel={back}//{() => back()}
         />
       )}
       {mode === EDIT && (
@@ -89,14 +89,14 @@ export default function Appointment(props) {
           interviewers={props.interviewers}
           student={props.interview.student}
           interviewer={props.interview.interviewer.id}
-          onCancel={() => back()}
+          onCancel={back}//{() => back()}
           onSave={save}
         />
       )}
       {mode === ERROR_SAVE && (
         <Error
           message='Error, cant save Appointment, try again...'
-          onClose={() => back()}
+          onClose={back}//{() => back()}
         />
       )}
       {mode === ERROR_DELETE && <Error message={'Error deleting encountered. Sorry!'} onClose={back} 
