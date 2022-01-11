@@ -20,7 +20,7 @@ export default function Appointment(props) {
   const ERROR_SAVE = "ERROR_SAVE";
   const ERROR_DELETE = "ERROR_DELETE";
 
-  const { mode, transition, back } = useVisualMode
+  const { history, transition, back } = useVisualMode
   (
     props.interview ? SHOW : EMPTY
   );
@@ -59,10 +59,10 @@ export default function Appointment(props) {
     <article className="appointment" >
       {props.time ? <Header time={props.time} /> : 'No Apppointments'}
 
-      {mode === EMPTY && <Empty onAdd={() => transition(CREATE)} />}
-      {mode === SAVING && <Status message={'Saving...'} />}
-      {mode === DELETING && <Status message={'Deleting'} />}
-      {mode === SHOW && (
+      {history[history.length-1] === EMPTY && <Empty onAdd={() => transition(CREATE)} />}
+      {history[history.length-1] === SAVING && <Status message={'Saving...'} />}
+      {history[history.length-1] === DELETING && <Status message={'Deleting'} />}
+      {history[history.length-1] === SHOW && (
         <Show
           student={props.interview.student}
           interviewer={props.interview.interviewer && props.interview.interviewer.name}
@@ -70,36 +70,37 @@ export default function Appointment(props) {
           onEdit={() => transition(EDIT)}
         />
       )}
-      {mode === CREATE && (
+      {history[history.length-1] === CREATE && (
         <Form
           interviewers={props.interviewers}
           onCancel={() => back(Empty)}
           onSave={save}
         />
       )}
-      {mode === CONFIRM && (
+      {history[history.length-1] === CONFIRM && (
         <Confirm
           message={`Are you sure you want to delete?`}
-          onConfirm={onDelete}//{() => onDelete()}
-          onCancel={back}//{() => back()}
+          onConfirm={()=>onDelete()}
+          onCancel={() => back()}
         />
       )}
-      {mode === EDIT && (
+      {history[history.length-1] === EDIT && (
         <Form
           interviewers={props.interviewers}
           student={props.interview.student}
           interviewer={props.interview.interviewer.id}
-          onCancel={back}//{() => back()}
+          onCancel={back}
           onSave={save}
         />
       )}
-      {mode === ERROR_SAVE && (
+      {history[history.length-1] === ERROR_SAVE && (
         <Error
           message='Error, cant save Appointment, try again...'
-          onClose={back}//{() => back()}
+          onClose={() => back()}
         />
       )}
-      {mode === ERROR_DELETE && <Error message={'Error deleting encountered. Sorry!'} onClose={back} 
+      {history[history.length-1] === ERROR_DELETE && <Error message={'Error deleting encountered. Sorry!'} onClose={() => back()}
+ 
       />
       }
 
