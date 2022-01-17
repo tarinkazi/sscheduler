@@ -1,61 +1,28 @@
 import { useState } from "react";
 
 export default function useVisualMode(initial) {
-  
+  const [mode, setMode] = useState(initial);
   const [history, setHistory] = useState([initial]);
 
-  const transition = (mode, replace = false) => {
+  const transition = (newMode, replace = false) => {
+    setMode(newMode)
     if (replace) {
-    setHistory(history.slice(0, history.length-1));
+    setHistory([...history.slice(0, history.length-1), newMode]);
     }
-    setHistory([...history, mode]);
+    setHistory([...history, newMode]);
   };
 
   const back = () => {
   
-    if (history[history.length-1] !== initial) {
-      setHistory([...history.slice(0, history.length-2)]); // react setState is asynchronous
+    if (mode !== initial) {
+      setMode(history[history.length-2]);
+      setHistory([...history.slice(0, history.length-1)]); // react setState is asynchronous
       
     }
   }
   
-  return {transition, back, history};
+  return {transition, back, mode};
 
-  // const [mode, setMode] = useState(initMode);
-  // const [history, setHistory] = useState([initMode]);
-
-  // // saves the mode history and sets the new mode
-  // // this allows the back function to recal the last
-  // // mode the user was in for exit and cancel buttons.
-  // const transition = (newMode, replace = false) => {
-
-  //   if (replace) {
-  //     setHistory((prev) => [...prev.slice(0, -1), newMode]);
-  //   } else {
-  //     setHistory((prev) => [...prev, newMode]);
-  //   }
-
-  //   setMode(newMode);
-  // }
   
-  // // goes back to the last mode user was in.
-  // // prevents user from deleting the initial history.
-  // const back = () => {
-    
-  //   setHistory((prev) => {
-      
-  //     if (prev.length === 1) {
-  //       return [...prev];
-  //     }
-
-  //     const lastMode = [...prev.slice(0, -1)];
-  //     setMode(lastMode[lastMode.length -1]);
-
-  //     return lastMode;
-
-  //   })
-  // }
-
-  // return { mode, transition, back }
 }
 
